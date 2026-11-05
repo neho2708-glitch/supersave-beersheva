@@ -1,0 +1,41 @@
+name: Scheduled price import
+
+# Runs only when a production database is configured in the repository's secrets.
+# Some sources block addresses outside Israel. For reliable imports, register a
+# self-hosted runner in Israel and set the repository variable INGEST_RUNNER to its label.
+
+on:
+  schedule:
+    - cron: "30 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  import:
+    runs-on: ${{ vars.INGEST_RUNNER || 'ubuntu-latest' }}
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+    steps:
+      - name: Stop if no database is configured
+        id: guard
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "DATABASE_URL secret is not set, so there is nothing to import into."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.guard.outputs.skip != 'true'
+      - uses: actions/setup-python@v5
+        if: steps.guard.outputs.skip != 'true'
+        with:
+          python-version: "3.12"
+      - run: pip install -r data-engine/requirements.txt
+        if: steps.guard.outputs.skip != 'true'
+      - run: python -m supersave_engine.cli import --all --trigger schedule
+        if: steps.guard.outputs.skip != 'true'
+        working-directory: data-engine
+      - run: python -m supersave_engine.cli verify --tolerate-network --no-write
+        if: steps.guard.outputs.skip != 'true'
+        working-directory: data-engine
