@@ -1,0 +1,17 @@
+{
+  "jobId": 5,
+  "chain": "carrefour",
+  "trigger": "manual",
+  "status": "SUCCESS",
+  "finishedAt": "2026-11-05T14:48:58.608158+00:00",
+  "branches": 5,
+  "filesFound": 52,
+  "filesDownloaded": 29,
+  "itemsParsed": 52366,
+  "productsMatched": 286,
+  "pricesValid": 1364,
+  "pricesChanged": 3,
+  "promotions": 466,
+  "reviewItems": 81,
+  "errors": []
+}

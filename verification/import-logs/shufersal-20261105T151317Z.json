@@ -1,0 +1,17 @@
+{
+  "jobId": 10,
+  "chain": "shufersal",
+  "trigger": "manual",
+  "status": "SUCCESS",
+  "finishedAt": "2026-11-05T15:13:17.214442+00:00",
+  "branches": 9,
+  "filesFound": 28,
+  "filesDownloaded": 21,
+  "itemsParsed": 67492,
+  "productsMatched": 0,
+  "pricesValid": 2030,
+  "pricesChanged": 0,
+  "promotions": 758,
+  "reviewItems": 0,
+  "errors": []
+}

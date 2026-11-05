@@ -1,0 +1,17 @@
+{
+  "jobId": 4,
+  "chain": "rami-levy",
+  "trigger": "manual",
+  "status": "SUCCESS",
+  "finishedAt": "2026-11-05T14:48:51.710000+00:00",
+  "branches": 3,
+  "filesFound": 49,
+  "filesDownloaded": 16,
+  "itemsParsed": 80700,
+  "productsMatched": 278,
+  "pricesValid": 1814,
+  "pricesChanged": 11,
+  "promotions": 372,
+  "reviewItems": 162,
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "jobId": 23,
+  "chain": "victory",
+  "trigger": "admin",
+  "status": "SUCCESS",
+  "finishedAt": "2026-11-05T17:55:08.677751+00:00",
+  "branches": 1,
+  "filesFound": 28,
+  "filesDownloaded": 16,
+  "itemsParsed": 148513,
+  "productsMatched": 0,
+  "pricesValid": 282,
+  "pricesChanged": 0,
+  "promotions": 122,
+  "reviewItems": 0,
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "jobId": 15,
+  "chain": "osher-ad",
+  "trigger": "manual",
+  "status": "SUCCESS",
+  "finishedAt": "2026-11-05T15:13:56.334809+00:00",
+  "branches": 1,
+  "filesFound": 13,
+  "filesDownloaded": 4,
+  "itemsParsed": 6849,
+  "productsMatched": 0,
+  "pricesValid": 234,
+  "pricesChanged": 0,
+  "promotions": 65,
+  "reviewItems": 0,
+  "errors": []
+}

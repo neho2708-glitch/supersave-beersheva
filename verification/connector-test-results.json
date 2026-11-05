@@ -1,0 +1,725 @@
+{
+  "generatedAt": "2026-11-05T15:18:05.013704+00:00",
+  "generatedBy": "supersave_engine.verify (live run)",
+  "results": [
+    {
+      "chain": "shufersal",
+      "chainName": "שופרסל",
+      "sourceName": "prices.shufersal.co.il",
+      "sourceUrl": "https://prices.shufersal.co.il/",
+      "connectionType": "HTML listing with signed blob links",
+      "fileFormat": "XML in GZ",
+      "checkedAt": "2026-11-05T15:16:46.158472+00:00",
+      "steps": [
+        {
+          "step": "list_files",
+          "ok": true,
+          "detail": "1 files listed"
+        },
+        {
+          "step": "download_stores",
+          "ok": true,
+          "detail": "Stores7290027600007-000-20261105-020.gz, 12659 bytes"
+        },
+        {
+          "step": "parse_stores",
+          "ok": true,
+          "detail": "417 stores, 9 in Be'er Sheva"
+        },
+        {
+          "step": "download_prices",
+          "ok": true,
+          "detail": "PriceFull7290027600007-002-248-20261105-030000.gz, 385526 bytes"
+        },
+        {
+          "step": "parse_and_validate_prices",
+          "ok": true,
+          "detail": "{\"items\": 7621, \"validPrices\": 7621, \"validShare\": 1.0, \"globalBarcodes\": 7610, \"ok\": true}"
+        },
+        {
+          "step": "extract_real_product",
+          "ok": true,
+          "detail": "שקיות זיפר M 25 יחידות = 16.90 ILS"
+        },
+        {
+          "step": "parse_promotions",
+          "ok": true,
+          "detail": "PromoFull7290027600007-002-248-20261105-030000.gz: 1388 promotions, 1388 with items"
+        },
+        {
+          "step": "freshness",
+          "ok": true,
+          "detail": "file age 14.3h, limit 48h"
+        }
+      ],
+      "storesTotal": 417,
+      "beerShevaBranches": [
+        {
+          "code": "248",
+          "name": "דיל ב\"ש- נווה מנחם",
+          "address": "החשמונאים 15",
+          "format": "שופרסל דיל"
+        },
+        {
+          "code": "222",
+          "name": "דיל רמות ב\"ש ב'",
+          "address": "הערים התאומות 28",
+          "format": "שופרסל דיל"
+        },
+        {
+          "code": "110",
+          "name": "דיל הפארק ב\"ש",
+          "address": "20 נחל פרת",
+          "format": "שופרסל דיל"
+        },
+        {
+          "code": "83",
+          "name": "דיל ב\"ש- שאול המלך",
+          "address": "קניון שאול המלך",
+          "format": "שופרסל דיל"
+        },
+        {
+          "code": "65",
+          "name": "דיל ב\"ש- צ'ורלי",
+          "address": "אורגים פינת ב.ג",
+          "format": "שופרסל דיל"
+        },
+        {
+          "code": "444",
+          "name": "אקספרס.ב\"ש אביסרור",
+          "address": "רח' יעקב כהן 8",
+          "format": "שופרסל אקספרס"
+        },
+        {
+          "code": "169",
+          "name": "אקספרס באר שבע",
+          "address": "אפרים לרון 20",
+          "format": "שופרסל אקספרס"
+        },
+        {
+          "code": "90",
+          "name": "אקספרס גב ים באר שבע",
+          "address": "האנרגיה 77",
+          "format": "שופרסל אקספרס"
+        },
+        {
+          "code": "35",
+          "name": "יוניברס באר שבע וולפסון",
+          "address": "רח' וולפסון 13",
+          "format": "יוניברס"
+        }
+      ],
+      "sample": {
+        "itemCode": "10900035187",
+        "name": "שקיות זיפר M 25 יחידות",
+        "price": "16.90",
+        "branch": "דיל ב\"ש- נווה מנחם",
+        "file": "PriceFull7290027600007-002-248-20261105-030000.gz",
+        "fileUrl": "https://pricesprodpublic.blob.core.windows.net/pricefull/PriceFull7290027600007-002-248-20261105-030000.gz"
+      },
+      "itemsParsed": 7621,
+      "validPrices": 7621,
+      "latestFile": "PriceFull7290027600007-002-248-20261105-030000.gz",
+      "latestFileAt": "2026-11-05T03:00:00+02:00",
+      "promotionsParsed": 1388,
+      "status": "VERIFIED",
+      "durationMs": 62343,
+      "errorCount": 0,
+      "database": {
+        "lastImportAttempt": "2026-11-05T17:08:02.284000+02:00",
+        "lastSuccessfulImport": "2026-11-05T17:13:17.213000+02:00",
+        "productsImported": 255,
+        "validPricesInDatabase": 2030,
+        "importErrorsLast7Days": 0
+      }
+    },
+    {
+      "chain": "rami-levy",
+      "chainName": "רמי לוי",
+      "sourceName": "Cerberus / publishedprices.co.il",
+      "sourceUrl": "https://url.publishedprices.co.il/login",
+      "connectionType": "HTTPS portal (session + JSON listing)",
+      "fileFormat": "XML in GZ",
+      "checkedAt": "2026-11-05T15:17:48.505855+00:00",
+      "steps": [
+        {
+          "step": "list_files",
+          "ok": true,
+          "detail": "2221 files listed"
+        },
+        {
+          "step": "download_stores",
+          "ok": true,
+          "detail": "Stores7290058140886-000-20261105-050500.xml, 38638 bytes"
+        },
+        {
+          "step": "parse_stores",
+          "ok": true,
+          "detail": "99 stores, 3 in Be'er Sheva"
+        },
+        {
+          "step": "download_prices",
+          "ok": true,
+          "detail": "PriceFull7290058140886-001-027-20261105-060006.gz, 1028871 bytes"
+        },
+        {
+          "step": "parse_and_validate_prices",
+          "ok": true,
+          "detail": "{\"items\": 13579, \"validPrices\": 13579, \"validShare\": 1.0, \"globalBarcodes\": 13579, \"ok\": true}"
+        },
+        {
+          "step": "extract_real_product",
+          "ok": true,
+          "detail": "רביעיית פחיות שוופס = 12.50 ILS"
+        },
+        {
+          "step": "parse_promotions",
+          "ok": true,
+          "detail": "PromoFull7290058140886-001-027-20261105-120110.gz: 2401 promotions, 2401 with items"
+        },
+        {
+          "step": "freshness",
+          "ok": true,
+          "detail": "file age 11.3h, limit 48h"
+        }
+      ],
+      "storesTotal": 99,
+      "beerShevaBranches": [
+        {
+          "code": "027",
+          "name": "באר שבע",
+          "address": "הע\"ל 7 עמק שרה",
+          "format": "1"
+        },
+        {
+          "code": "063",
+          "name": "ביג באר שבע החדש",
+          "address": "דרך חברון 21",
+          "format": "1"
+        },
+        {
+          "code": "711",
+          "name": "רגר באר שבע",
+          "address": "יעקב כהן 12",
+          "format": "1"
+        }
+      ],
+      "sample": {
+        "itemCode": "7290017023212",
+        "name": "רביעיית פחיות שוופס",
+        "price": "12.50",
+        "branch": "באר שבע",
+        "file": "PriceFull7290058140886-001-027-20261105-060006.gz",
+        "fileUrl": "https://url.publishedprices.co.il/file/d/PriceFull7290058140886-001-027-20261105-060006.gz"
+      },
+      "itemsParsed": 13579,
+      "validPrices": 13579,
+      "latestFile": "PriceFull7290058140886-001-027-20261105-060006.gz",
+      "latestFileAt": "2026-11-05T06:00:00+02:00",
+      "promotionsParsed": 2401,
+      "status": "VERIFIED",
+      "durationMs": 5047,
+      "errorCount": 0,
+      "database": {
+        "lastImportAttempt": "2026-11-05T17:13:17.217000+02:00",
+        "lastSuccessfulImport": "2026-11-05T17:13:28.245000+02:00",
+        "productsImported": 278,
+        "validPricesInDatabase": 740,
+        "importErrorsLast7Days": 0
+      }
+    },
+    {
+      "chain": "carrefour",
+      "chainName": "קרפור",
+      "sourceName": "prices.carrefour.co.il",
+      "sourceUrl": "https://prices.carrefour.co.il/",
+      "connectionType": "HTML page with embedded JSON listing",
+      "fileFormat": "XML / XML in GZ",
+      "checkedAt": "2026-11-05T15:17:53.582719+00:00",
+      "steps": [
+        {
+          "step": "list_files",
+          "ok": true,
+          "detail": "1485 files listed"
+        },
+        {
+          "step": "download_stores",
+          "ok": true,
+          "detail": "Stores7290055700007-000-20261105-000100.xml, 61394 bytes"
+        },
+        {
+          "step": "parse_stores",
+          "ok": true,
+          "detail": "147 stores, 5 in Be'er Sheva"
+        },
+        {
+          "step": "download_prices",
+          "ok": true,
+          "detail": "PriceFull7290055700007-001-117-20261105-051004.gz, 875811 bytes"
+        },
+        {
+          "step": "parse_and_validate_prices",
+          "ok": true,
+          "detail": "{\"items\": 11786, \"validPrices\": 11786, \"validShare\": 1.0, \"globalBarcodes\": 11558, \"ok\": true}"
+        },
+        {
+          "step": "extract_real_product",
+          "ok": true,
+          "detail": "צלחות ריו גדול לבן כ = 14.90 ILS"
+        },
+        {
+          "step": "parse_promotions",
+          "ok": true,
+          "detail": "PromoFull7290055700007-001-117-20261105-051118.gz: 1689 promotions, 1689 with items"
+        },
+        {
+          "step": "freshness",
+          "ok": true,
+          "detail": "file age 12.1h, limit 48h"
+        }
+      ],
+      "storesTotal": 147,
+      "beerShevaBranches": [
+        {
+          "code": "117",
+          "name": "סינמה סיטי",
+          "address": "סינמה סיטי",
+          "format": "1"
+        },
+        {
+          "code": "610",
+          "name": "קרפור סיטי  הצרכניה רובע ט ב'ש",
+          "address": "42 שדרות י-ם",
+          "format": "1"
+        },
+        {
+          "code": "440",
+          "name": "קרפור סיטי  צפון באר-שבע (2976)",
+          "address": "101 אברהם אבינו",
+          "format": "1"
+        },
+        {
+          "code": "447",
+          "name": "קרפור מרקט  קניון אביה (3300)",
+          "address": "קנ.אביה שד.שאול המלך",
+          "format": "1"
+        },
+        {
+          "code": "455",
+          "name": "קרפור מרקט  נווה זאב (3700)",
+          "address": "64 יוהנה זבוטינסקי",
+          "format": "1"
+        }
+      ],
+      "sample": {
+        "itemCode": "7290019375371",
+        "name": "צלחות ריו גדול לבן כ",
+        "price": "14.90",
+        "branch": "סינמה סיטי",
+        "file": "PriceFull7290055700007-001-117-20261105-051004.gz",
+        "fileUrl": "https://prices.carrefour.co.il/20261105/PriceFull7290055700007-001-117-20261105-051004.gz"
+      },
+      "itemsParsed": 11786,
+      "validPrices": 11786,
+      "latestFile": "PriceFull7290055700007-001-117-20261105-051004.gz",
+      "latestFileAt": "2026-11-05T05:10:00+02:00",
+      "promotionsParsed": 1689,
+      "status": "VERIFIED",
+      "durationMs": 1344,
+      "errorCount": 0,
+      "database": {
+        "lastImportAttempt": "2026-11-05T17:13:28.250000+02:00",
+        "lastSuccessfulImport": "2026-11-05T17:13:35.291000+02:00",
+        "productsImported": 286,
+        "validPricesInDatabase": 1354,
+        "importErrorsLast7Days": 0
+      }
+    },
+    {
+      "chain": "yochananof",
+      "chainName": "יוחננוף",
+      "sourceName": "Cerberus / publishedprices.co.il",
+      "sourceUrl": "https://url.publishedprices.co.il/login",
+      "connectionType": "HTTPS portal (session + JSON listing)",
+      "fileFormat": "XML in GZ",
+      "checkedAt": "2026-11-05T15:17:54.940351+00:00",
+      "steps": [
+        {
+          "step": "list_files",
+          "ok": true,
+          "detail": "861 files listed"
+        },
+        {
+          "step": "download_stores",
+          "ok": true,
+          "detail": "Stores7290803800003-000-20261105-010000.xml, 19636 bytes"
+        },
+        {
+          "step": "parse_stores",
+          "ok": true,
+          "detail": "51 stores, 1 in Be'er Sheva"
+        },
+        {
+          "step": "download_prices",
+          "ok": true,
+          "detail": "PriceFull7290803800003-000-040-20261105-004031.gz, 512362 bytes"
+        },
+        {
+          "step": "parse_and_validate_prices",
+          "ok": true,
+          "detail": "{\"items\": 11327, \"validPrices\": 11323, \"validShare\": 0.9996, \"globalBarcodes\": 10745, \"ok\": true}"
+        },
+        {
+          "step": "extract_real_product",
+          "ok": true,
+          "detail": "רדיד אלומיניום נון ס = 14.90 ILS"
+        },
+        {
+          "step": "parse_promotions",
+          "ok": true,
+          "detail": "PromoFull7290803800003-000-040-20261105-004031.gz: 1240 promotions, 1240 with items"
+        },
+        {
+          "step": "freshness",
+          "ok": true,
+          "detail": "file age 16.6h, limit 48h"
+        }
+      ],
+      "storesTotal": 51,
+      "beerShevaBranches": [
+        {
+          "code": "040",
+          "name": "באר שבע",
+          "address": "unknown",
+          "format": "1"
+        }
+      ],
+      "sample": {
+        "itemCode": "10900678148",
+        "name": "רדיד אלומיניום נון ס",
+        "price": "14.90",
+        "branch": "באר שבע",
+        "file": "PriceFull7290803800003-000-040-20261105-004031.gz",
+        "fileUrl": "https://url.publishedprices.co.il/file/d/PriceFull7290803800003-000-040-20261105-004031.gz"
+      },
+      "itemsParsed": 11327,
+      "validPrices": 11323,
+      "latestFile": "PriceFull7290803800003-000-040-20261105-004031.gz",
+      "latestFileAt": "2026-11-05T00:40:00+02:00",
+      "promotionsParsed": 1240,
+      "status": "VERIFIED",
+      "durationMs": 3297,
+      "errorCount": 0,
+      "database": {
+        "lastImportAttempt": "2026-11-05T17:13:35.294000+02:00",
+        "lastSuccessfulImport": "2026-11-05T17:13:38.052000+02:00",
+        "productsImported": 288,
+        "validPricesInDatabase": 288,
+        "importErrorsLast7Days": 0
+      }
+    },
+    {
+      "chain": "victory",
+      "chainName": "ויקטורי",
+      "sourceName": "laibcatalog.co.il (Nibit)",
+      "sourceUrl": "https://laibcatalog.co.il/webapi/api/getfiles",
+      "connectionType": "JSON API",
+      "fileFormat": "XML in GZ",
+      "checkedAt": "2026-11-05T15:17:58.242280+00:00",
+      "steps": [
+        {
+          "step": "list_files",
+          "ok": true,
+          "detail": "1676 files listed"
+        },
+        {
+          "step": "download_stores",
+          "ok": true,
+          "detail": "Stores7290696200003-000-20261105060100-060100.gz, 2473 bytes"
+        },
+        {
+          "step": "parse_stores",
+          "ok": true,
+          "detail": "70 stores, 1 in Be'er Sheva"
+        },
+        {
+          "step": "download_prices",
+          "ok": true,
+          "detail": "PriceFull7290696200003-001-068-20261105-050438.gz, 541176 bytes"
+        },
+        {
+          "step": "parse_and_validate_prices",
+          "ok": true,
+          "detail": "{\"items\": 9725, \"validPrices\": 9724, \"validShare\": 0.9999, \"globalBarcodes\": 8664, \"ok\": true}"
+        },
+        {
+          "step": "extract_real_product",
+          "ok": true,
+          "detail": "שום תפזורת תוצרת סין = 29.9 ILS"
+        },
+        {
+          "step": "parse_promotions",
+          "ok": true,
+          "detail": "PromoFull7290696200003-001-068-20261105-050449.gz: 4030 promotions, 4030 with items"
+        },
+        {
+          "step": "freshness",
+          "ok": true,
+          "detail": "file age 12.2h, limit 48h"
+        }
+      ],
+      "storesTotal": 70,
+      "beerShevaBranches": [
+        {
+          "code": "068",
+          "name": "באר שבע",
+          "address": "בן גוריון 15",
+          "format": "ויקטורי"
+        }
+      ],
+      "sample": {
+        "itemCode": "7290000000459",
+        "name": "שום תפזורת תוצרת סין",
+        "price": "29.9",
+        "branch": "באר שבע",
+        "file": "PriceFull7290696200003-001-068-20261105-050438.gz",
+        "fileUrl": "https://laibcatalog.co.il/webapi/7290696200003/PriceFull7290696200003-001-068-20261105-050438.gz"
+      },
+      "itemsParsed": 9725,
+      "validPrices": 9724,
+      "latestFile": "PriceFull7290696200003-001-068-20261105-050438.gz",
+      "latestFileAt": "2026-11-05T05:04:00+02:00",
+      "promotionsParsed": 4030,
+      "status": "VERIFIED",
+      "durationMs": 2015,
+      "errorCount": 0,
+      "database": {
+        "lastImportAttempt": "2026-11-05T17:13:38.055000+02:00",
+        "lastSuccessfulImport": "2026-11-05T17:13:55.012000+02:00",
+        "productsImported": 282,
+        "validPricesInDatabase": 282,
+        "importErrorsLast7Days": 0
+      }
+    },
+    {
+      "chain": "osher-ad",
+      "chainName": "אושר עד",
+      "sourceName": "Cerberus / publishedprices.co.il",
+      "sourceUrl": "https://url.publishedprices.co.il/login",
+      "connectionType": "HTTPS portal (session + JSON listing)",
+      "fileFormat": "XML in GZ",
+      "checkedAt": "2026-11-05T15:18:00.272568+00:00",
+      "steps": [
+        {
+          "step": "list_files",
+          "ok": true,
+          "detail": "367 files listed"
+        },
+        {
+          "step": "download_stores",
+          "ok": true,
+          "detail": "Stores7290103152017-000-20261105-080500.xml, 9790 bytes"
+        },
+        {
+          "step": "parse_stores",
+          "ok": true,
+          "detail": "24 stores, 1 in Be'er Sheva"
+        },
+        {
+          "step": "download_prices",
+          "ok": true,
+          "detail": "PriceFull7290103152017-001-013-20261105-141502.gz, 466882 bytes"
+        },
+        {
+          "step": "parse_and_validate_prices",
+          "ok": true,
+          "detail": "{\"items\": 6097, \"validPrices\": 6097, \"validShare\": 1.0, \"globalBarcodes\": 6097, \"ok\": true}"
+        },
+        {
+          "step": "extract_real_product",
+          "ok": true,
+          "detail": "יין אור הגנוז עמוקה = 59.90 ILS"
+        },
+        {
+          "step": "parse_promotions",
+          "ok": true,
+          "detail": "PromoFull7290103152017-001-013-20261105-141522.gz: 751 promotions, 751 with items"
+        },
+        {
+          "step": "freshness",
+          "ok": true,
+          "detail": "file age 3.1h, limit 48h"
+        }
+      ],
+      "storesTotal": 24,
+      "beerShevaBranches": [
+        {
+          "code": "013",
+          "name": "באר שבע",
+          "address": "הקוצר 15 אזור תעשיה עמק שרה",
+          "format": "1"
+        }
+      ],
+      "sample": {
+        "itemCode": "7290013303349",
+        "name": "יין אור הגנוז עמוקה",
+        "price": "59.90",
+        "branch": "באר שבע",
+        "file": "PriceFull7290103152017-001-013-20261105-141502.gz",
+        "fileUrl": "https://url.publishedprices.co.il/file/d/PriceFull7290103152017-001-013-20261105-141502.gz"
+      },
+      "itemsParsed": 6097,
+      "validPrices": 6097,
+      "latestFile": "PriceFull7290103152017-001-013-20261105-141502.gz",
+      "latestFileAt": "2026-11-05T14:15:00+02:00",
+      "promotionsParsed": 751,
+      "status": "VERIFIED",
+      "durationMs": 2311,
+      "errorCount": 0,
+      "database": {
+        "lastImportAttempt": "2026-11-05T17:13:55.017000+02:00",
+        "lastSuccessfulImport": "2026-11-05T17:13:56.335000+02:00",
+        "productsImported": 234,
+        "validPricesInDatabase": 234,
+        "importErrorsLast7Days": 1
+      }
+    },
+    {
+      "chain": "mahsanei-hashuk",
+      "chainName": "מחסני השוק",
+      "sourceName": "laibcatalog.co.il (Nibit)",
+      "sourceUrl": "https://laibcatalog.co.il/webapi/api/getfiles",
+      "connectionType": "JSON API",
+      "fileFormat": "XML in GZ",
+      "checkedAt": "2026-11-05T15:18:02.595568+00:00",
+      "steps": [
+        {
+          "step": "list_files",
+          "ok": true,
+          "detail": "1021 files listed"
+        },
+        {
+          "step": "download_stores",
+          "ok": true,
+          "detail": "Stores7290661400001-000-20261105060100-060100.gz, 2735 bytes"
+        },
+        {
+          "step": "parse_stores",
+          "ok": true,
+          "detail": "71 stores, 10 in Be'er Sheva"
+        },
+        {
+          "step": "download_prices",
+          "ok": true,
+          "detail": "PriceFull7290661400001-001-001-20261105-041923.gz, 721896 bytes"
+        },
+        {
+          "step": "parse_and_validate_prices",
+          "ok": true,
+          "detail": "{\"items\": 13373, \"validPrices\": 13372, \"validShare\": 0.9999, \"globalBarcodes\": 10883, \"ok\": true}"
+        },
+        {
+          "step": "extract_real_product",
+          "ok": true,
+          "detail": "גזר ארוז = 3.9 ILS"
+        },
+        {
+          "step": "parse_promotions",
+          "ok": true,
+          "detail": "PromoFull7290661400001-001-001-20261105-041941.gz: 5015 promotions, 5015 with items"
+        },
+        {
+          "step": "freshness",
+          "ok": true,
+          "detail": "file age 13.0h, limit 48h"
+        }
+      ],
+      "storesTotal": 71,
+      "beerShevaBranches": [
+        {
+          "code": "001",
+          "name": "1 ב\"ש-בית אשל",
+          "address": "בית אשל 1",
+          "format": "מחסני השוק"
+        },
+        {
+          "code": "058",
+          "name": "58 סניף אורגים- ב\"ש",
+          "address": "האורגים http://ww 1",
+          "format": "מחסני השוק"
+        },
+        {
+          "code": "015",
+          "name": "15  שכונה ט ב\"ש",
+          "address": "שד` ירושלים 10",
+          "format": "מחסני השוק בסיטי"
+        },
+        {
+          "code": "016",
+          "name": "16 יעלים ב\"ש",
+          "address": "יעלים 34",
+          "format": "מחסני השוק בסיטי"
+        },
+        {
+          "code": "026",
+          "name": "26  רמות- ב\"ש",
+          "address": "מנחם דידנר 18",
+          "format": "מחסני השוק בסיטי"
+        },
+        {
+          "code": "030",
+          "name": "30 נווה זאב- ב\"ש",
+          "address": "מאפו 7",
+          "format": "מחסני השוק בסיטי"
+        },
+        {
+          "code": "050",
+          "name": "50 רד\"ק- ב\"ש",
+          "address": "רחבת רד\"ק 28",
+          "format": "מחסני השוק בסיטי"
+        },
+        {
+          "code": "080",
+          "name": "80 המשחררים-ב\"ש",
+          "address": "דרך המשחררים 100",
+          "format": "מחסני השוק בסיטי"
+        },
+        {
+          "code": "081",
+          "name": "81 מבצע עובדה- ב\"ש",
+          "address": "מבצע עובדה 2",
+          "format": "מחסני השוק בסיטי"
+        },
+        {
+          "code": "082",
+          "name": "82 קריה חרדית מהדרין ב\"ש",
+          "address": "טולדנו 12",
+          "format": "מחסני השוק מהדרין"
+        }
+      ],
+      "sample": {
+        "itemCode": "7290018825006",
+        "name": "גזר ארוז",
+        "price": "3.9",
+        "branch": "1 ב\"ש-בית אשל",
+        "file": "PriceFull7290661400001-001-001-20261105-041923.gz",
+        "fileUrl": "https://laibcatalog.co.il/webapi/7290661400001/PriceFull7290661400001-001-001-20261105-041923.gz"
+      },
+      "itemsParsed": 13373,
+      "validPrices": 13372,
+      "latestFile": "PriceFull7290661400001-001-001-20261105-041923.gz",
+      "latestFileAt": "2026-11-05T04:19:00+02:00",
+      "promotionsParsed": 5015,
+      "status": "VERIFIED",
+      "durationMs": 2344,
+      "errorCount": 0,
+      "database": {
+        "lastImportAttempt": "2026-11-05T17:13:56.338000+02:00",
+        "lastSuccessfulImport": "2026-11-05T17:16:44.516000+02:00",
+        "productsImported": 275,
+        "validPricesInDatabase": 2586,
+        "importErrorsLast7Days": 0
+      }
+    }
+  ]
+}

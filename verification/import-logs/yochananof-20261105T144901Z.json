@@ -1,0 +1,17 @@
+{
+  "jobId": 6,
+  "chain": "yochananof",
+  "trigger": "manual",
+  "status": "SUCCESS",
+  "finishedAt": "2026-11-05T14:49:01.872987+00:00",
+  "branches": 1,
+  "filesFound": 20,
+  "filesDownloaded": 12,
+  "itemsParsed": 12628,
+  "productsMatched": 288,
+  "pricesValid": 288,
+  "pricesChanged": 0,
+  "promotions": 81,
+  "reviewItems": 16,
+  "errors": []
+}

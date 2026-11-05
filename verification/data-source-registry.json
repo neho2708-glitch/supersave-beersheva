@@ -1,0 +1,109 @@
+[
+  {
+    "chain": "shufersal",
+    "chainNameHe": "שופרסל",
+    "chainNameEn": "Shufersal",
+    "chainCodes": [
+      "7290027600007"
+    ],
+    "sourceName": "prices.shufersal.co.il",
+    "sourceUrl": "https://prices.shufersal.co.il/",
+    "connectionType": "HTML listing with signed blob links",
+    "fileFormat": "XML in GZ",
+    "updateFrequencyHours": 24,
+    "terms": "Public file published under the Food Act price-transparency regulations.",
+    "portalUsername": null
+  },
+  {
+    "chain": "rami-levy",
+    "chainNameHe": "רמי לוי",
+    "chainNameEn": "Rami Levy",
+    "chainCodes": [
+      "7290058140886"
+    ],
+    "sourceName": "Cerberus / publishedprices.co.il",
+    "sourceUrl": "https://url.publishedprices.co.il/login",
+    "connectionType": "HTTPS portal (session + JSON listing)",
+    "fileFormat": "XML in GZ",
+    "updateFrequencyHours": 24,
+    "terms": "Public file published under the Food Act price-transparency regulations.",
+    "portalUsername": "RamiLevi"
+  },
+  {
+    "chain": "carrefour",
+    "chainNameHe": "קרפור",
+    "chainNameEn": "Carrefour Israel (Yenot Bitan)",
+    "chainCodes": [
+      "7290055700007"
+    ],
+    "sourceName": "prices.carrefour.co.il",
+    "sourceUrl": "https://prices.carrefour.co.il/",
+    "connectionType": "HTML page with embedded JSON listing",
+    "fileFormat": "XML / XML in GZ",
+    "updateFrequencyHours": 24,
+    "terms": "Public file published under the Food Act price-transparency regulations.",
+    "portalUsername": null
+  },
+  {
+    "chain": "yochananof",
+    "chainNameHe": "יוחננוף",
+    "chainNameEn": "Yochananof",
+    "chainCodes": [
+      "7290803800003"
+    ],
+    "sourceName": "Cerberus / publishedprices.co.il",
+    "sourceUrl": "https://url.publishedprices.co.il/login",
+    "connectionType": "HTTPS portal (session + JSON listing)",
+    "fileFormat": "XML in GZ",
+    "updateFrequencyHours": 24,
+    "terms": "Public file published under the Food Act price-transparency regulations.",
+    "portalUsername": "yohananof"
+  },
+  {
+    "chain": "victory",
+    "chainNameHe": "ויקטורי",
+    "chainNameEn": "Victory",
+    "chainCodes": [
+      "7290696200003",
+      "7290058103393"
+    ],
+    "sourceName": "laibcatalog.co.il (Nibit)",
+    "sourceUrl": "https://laibcatalog.co.il/webapi/api/getfiles",
+    "connectionType": "JSON API",
+    "fileFormat": "XML in GZ",
+    "updateFrequencyHours": 24,
+    "terms": "Public file published under the Food Act price-transparency regulations.",
+    "portalUsername": null
+  },
+  {
+    "chain": "osher-ad",
+    "chainNameHe": "אושר עד",
+    "chainNameEn": "Osher Ad",
+    "chainCodes": [
+      "7290103152017"
+    ],
+    "sourceName": "Cerberus / publishedprices.co.il",
+    "sourceUrl": "https://url.publishedprices.co.il/login",
+    "connectionType": "HTTPS portal (session + JSON listing)",
+    "fileFormat": "XML in GZ",
+    "updateFrequencyHours": 24,
+    "terms": "Public file published under the Food Act price-transparency regulations.",
+    "portalUsername": "osherad"
+  },
+  {
+    "chain": "mahsanei-hashuk",
+    "chainNameHe": "מחסני השוק",
+    "chainNameEn": "Mahsanei Hashuk",
+    "chainCodes": [
+      "7290661400001",
+      "7290633800006"
+    ],
+    "sourceName": "laibcatalog.co.il (Nibit)",
+    "sourceUrl": "https://laibcatalog.co.il/webapi/api/getfiles",
+    "connectionType": "JSON API",
+    "fileFormat": "XML in GZ",
+    "updateFrequencyHours": 24,
+    "terms": "Public file published under the Food Act price-transparency regulations.",
+    "portalUsername": null
+  }
+]
