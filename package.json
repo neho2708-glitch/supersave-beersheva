@@ -1,0 +1,38 @@
+{
+  "name": "supersave-beersheva",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Virtual Supermarket and Real-Time Grocery Price Comparison Platform for Beer Sheva, Israel.",
+  "license": "MIT",
+  "workspaces": [
+    "frontend"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "npm run dev -w frontend",
+    "build": "npm run build -w frontend",
+    "start": "npm run start -w frontend",
+    "lint": "npm run lint -w frontend",
+    "typecheck": "npm run typecheck -w frontend",
+    "test": "vitest run",
+    "test:engine": "node scripts/engine.mjs --pytest",
+    "db:start": "node scripts/dev-db.mjs --detach",
+    "db:migrate": "prisma migrate deploy --schema database/schema.prisma",
+    "db:generate": "prisma generate --schema database/schema.prisma",
+    "verify:connectors": "node scripts/engine.mjs verify",
+    "import:all": "node scripts/engine.mjs import --all",
+    "db:seed": "node scripts/engine.mjs seed",
+    "db:stop": "node scripts/dev-db.mjs --stop",
+    "test:all": "npm run test && npm run test:engine && npm run verify:connectors"
+  },
+  "devDependencies": {
+    "embedded-postgres": "18.6.0-beta.19",
+    "prisma": "^6",
+    "vitest": "^3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6"
+  }
+}

@@ -1,0 +1,399 @@
+// SuperSave schema. Python's data engine writes the same tables with plain SQL;
+// this file is the single source of truth for their structure.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PriceStatus {
+  VERIFIED
+  STALE
+  DEMO
+}
+
+enum ConnectorStatus {
+  VERIFIED
+  FAILED
+  UNAVAILABLE
+  DEMO
+  STALE
+}
+
+enum JobStatus {
+  RUNNING
+  SUCCESS
+  PARTIAL
+  FAILED
+}
+
+enum MatchMethod {
+  BARCODE
+  FRESH_RULE
+  BRAND_SIZE_FUZZY
+  MANUAL
+}
+
+enum MatchStatus {
+  MATCHED
+  REVIEW
+  REJECTED
+}
+
+model SupermarketChain {
+  id         String   @id // slug, e.g. "shufersal"
+  nameHe     String
+  nameEn     String
+  chainCodes String[]
+  color      String   @default("#14532d")
+  website    String?
+  sortOrder  Int      @default(0)
+
+  branches    Branch[]
+  prices      ProductPrice[]
+  history     PriceHistory[]
+  promotions  Promotion[]
+  dataSources DataSource[]
+  importJobs  ImportJob[]
+  checks      ConnectorCheck[]
+  chainItems  ChainItem[]
+
+  @@map("SupermarketChains")
+}
+
+/// A physical store. Kept separate from chains; the city column allows expansion beyond Be'er Sheva.
+model Branch {
+  id           Int      @id @default(autoincrement())
+  chainId      String
+  storeCode    String
+  subchainCode String?
+  subchainName String?
+  nameHe       String
+  address      String?
+  city         String
+  active       Boolean  @default(true)
+  lastSeenAt   DateTime @db.Timestamptz(3)
+
+  chain      SupermarketChain @relation(fields: [chainId], references: [id])
+  prices     ProductPrice[]
+  history    PriceHistory[]
+  promotions Promotion[]
+
+  @@unique([chainId, storeCode])
+  @@index([city])
+  @@index([chainId])
+  @@map("Branches")
+}
+
+model ProductCategory {
+  id        String @id
+  nameHe    String
+  nameEn    String
+  sortOrder Int    @default(0)
+  color     String @default("#166534")
+  icon      String @default("🛒")
+
+  products Product[]
+
+  @@map("ProductCategories")
+}
+
+model Product {
+  id           String   @id // the barcode, or "fresh-*" for weighed goods with no shared barcode
+  barcode      String?  @unique // only ever taken from chain files, never invented
+  nameHe       String
+  nameEn       String?
+  brand        String?
+  categoryId   String
+  sizeAmount   Decimal? @db.Decimal(12, 3)
+  sizeUnit     String? // g | ml | unit
+  soldByWeight Boolean  @default(false)
+  matchKind    String   @default("BARCODE")
+  active       Boolean  @default(true)
+
+  category   ProductCategory @relation(fields: [categoryId], references: [id])
+  images     ProductImage[]
+  prices     ProductPrice[]
+  history    PriceHistory[]
+  promoItems PromotionItem[]
+  chainItems ChainItem[]
+  cartItems  CartItem[]
+
+  @@index([categoryId])
+  @@index([brand])
+  @@index([nameHe])
+  @@map("Products")
+}
+
+model ProductImage {
+  id          Int     @id @default(autoincrement())
+  productId   String
+  url         String // served path or remote URL
+  sourceUrl   String?
+  source      String
+  license     String?
+  attribution String?
+  isPrimary   Boolean @default(true)
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("ProductImages")
+}
+
+/// A chain's own product record and how it was matched to the catalogue.
+model ChainItem {
+  id                 Int         @id @default(autoincrement())
+  chainId            String
+  itemCode           String
+  itemType           String?
+  name               String
+  manufacturer       String?
+  sizeAmount         Decimal?    @db.Decimal(12, 3)
+  sizeUnit           String?
+  isWeighted         Boolean     @default(false)
+  productId          String?
+  candidateProductId String?
+  matchMethod        MatchMethod?
+  matchStatus        MatchStatus @default(REVIEW)
+  matchScore         Float?
+  matchReason        String?
+  samplePrice        Decimal?    @db.Decimal(10, 2)
+  lastSeenAt         DateTime    @db.Timestamptz(3)
+
+  chain   SupermarketChain @relation(fields: [chainId], references: [id])
+  product Product?         @relation(fields: [productId], references: [id])
+
+  @@unique([chainId, itemCode])
+  @@index([productId])
+  @@index([matchStatus])
+  @@map("ChainItems")
+}
+
+/// Current price of a product in one branch. Every row points back to its source file.
+model ProductPrice {
+  id                 Int         @id @default(autoincrement())
+  productId          String
+  branchId           Int
+  chainId            String
+  itemCode           String
+  regularPrice       Decimal     @db.Decimal(10, 2)
+  unitPrice          Decimal?    @db.Decimal(10, 2)
+  unitLabel          String?
+  dataSourceId       Int
+  sourceFileId       Int
+  collectedAt        DateTime    @db.Timestamptz(3)
+  sourcePublishedAt  DateTime    @db.Timestamptz(3)
+  priceChangedAt     DateTime?   @db.Timestamptz(3)
+  lastSaleAt         DateTime?   @db.Timestamptz(3)
+  verificationStatus PriceStatus @default(VERIFIED)
+  suspect            Boolean     @default(false)
+  suspectReason      String?
+  raw                Json?
+
+  product Product          @relation(fields: [productId], references: [id])
+  branch  Branch           @relation(fields: [branchId], references: [id])
+  chain   SupermarketChain @relation(fields: [chainId], references: [id])
+  file    SourceFile       @relation(fields: [sourceFileId], references: [id])
+  source  DataSource       @relation(fields: [dataSourceId], references: [id])
+
+  @@unique([productId, branchId])
+  @@index([chainId])
+  @@index([branchId])
+  @@index([productId])
+  @@index([sourcePublishedAt])
+  @@map("ProductPrices")
+}
+
+model PriceHistory {
+  id                BigInt   @id @default(autoincrement())
+  productId         String
+  branchId          Int
+  chainId           String
+  price             Decimal  @db.Decimal(10, 2)
+  recordedAt        DateTime @db.Timestamptz(3)
+  sourcePublishedAt DateTime @db.Timestamptz(3)
+  sourceFileId      Int
+
+  product Product          @relation(fields: [productId], references: [id])
+  branch  Branch           @relation(fields: [branchId], references: [id])
+  chain   SupermarketChain @relation(fields: [chainId], references: [id])
+
+  @@index([productId, recordedAt])
+  @@index([branchId, productId, recordedAt])
+  @@map("PriceHistory")
+}
+
+model Promotion {
+  id            Int       @id @default(autoincrement())
+  chainId       String
+  branchId      Int
+  promotionCode String
+  description   String
+  startsAt      DateTime? @db.Timestamptz(3)
+  endsAt        DateTime? @db.Timestamptz(3)
+  sourceUpdated DateTime? @db.Timestamptz(3)
+  clubId        String?
+  requiresClub  Boolean   @default(false)
+  isCoupon      Boolean   @default(false)
+  remarks       String?
+  sourceFileId  Int
+  collectedAt   DateTime  @db.Timestamptz(3)
+  raw           Json?
+
+  chain  SupermarketChain @relation(fields: [chainId], references: [id])
+  branch Branch           @relation(fields: [branchId], references: [id])
+  file   SourceFile       @relation(fields: [sourceFileId], references: [id])
+  items  PromotionItem[]
+
+  @@unique([branchId, promotionCode])
+  @@index([endsAt])
+  @@index([chainId])
+  @@map("Promotions")
+}
+
+/// How a promotion applies to one catalogue product.
+model PromotionItem {
+  id              Int      @id @default(autoincrement())
+  promotionId     Int
+  productId       String
+  rewardType      String?
+  minQty          Decimal? @db.Decimal(10, 3)
+  maxQty          Decimal? @db.Decimal(10, 3)
+  discountedPrice Decimal? @db.Decimal(10, 2)
+  discountRate    Decimal? @db.Decimal(6, 2)
+  /// Effective price per item at minQty. Null when the terms cannot be computed safely.
+  promoUnitPrice  Decimal? @db.Decimal(10, 2)
+  computable      Boolean  @default(false)
+  notComputableBecause String?
+
+  promotion Promotion @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+  product   Product   @relation(fields: [productId], references: [id])
+
+  @@unique([promotionId, productId])
+  @@index([productId])
+  @@map("PromotionItems")
+}
+
+model DataSource {
+  id                   Int      @id @default(autoincrement())
+  chainId              String
+  name                 String
+  url                  String
+  connectionType       String
+  fileFormat           String
+  updateFrequencyHours Int      @default(24)
+  termsNote            String?
+
+  chain  SupermarketChain @relation(fields: [chainId], references: [id])
+  files  SourceFile[]
+  prices ProductPrice[]
+  jobs   ImportJob[]
+  checks ConnectorCheck[]
+
+  @@unique([chainId, url])
+  @@map("DataSources")
+}
+
+/// Audit trail: every downloaded official file, with its hash and archive path.
+model SourceFile {
+  id           Int       @id @default(autoincrement())
+  dataSourceId Int
+  importJobId  Int?
+  fileName     String
+  url          String
+  kind         String
+  storeCode    String?
+  publishedAt  DateTime? @db.Timestamptz(3)
+  downloadedAt DateTime  @db.Timestamptz(3)
+  sha256       String
+  sizeBytes    Int
+  storedPath   String?
+  itemCount    Int?
+
+  source     DataSource     @relation(fields: [dataSourceId], references: [id])
+  job        ImportJob?     @relation(fields: [importJobId], references: [id])
+  prices     ProductPrice[]
+  promotions Promotion[]
+
+  @@unique([dataSourceId, fileName, sha256])
+  @@index([kind, publishedAt])
+  @@map("SourceFiles")
+}
+
+model ImportJob {
+  id                Int       @id @default(autoincrement())
+  chainId           String
+  dataSourceId      Int?
+  trigger           String    @default("manual")
+  status            JobStatus @default(RUNNING)
+  startedAt         DateTime  @db.Timestamptz(3)
+  finishedAt        DateTime? @db.Timestamptz(3)
+  branchesProcessed Int       @default(0)
+  filesFound        Int       @default(0)
+  filesDownloaded   Int       @default(0)
+  itemsParsed       Int       @default(0)
+  productsMatched   Int       @default(0)
+  pricesValid       Int       @default(0)
+  pricesChanged     Int       @default(0)
+  promotionsLoaded  Int       @default(0)
+  reviewItems       Int       @default(0)
+  errorCount        Int       @default(0)
+  errors            Json?
+
+  chain  SupermarketChain @relation(fields: [chainId], references: [id])
+  source DataSource?      @relation(fields: [dataSourceId], references: [id])
+  files  SourceFile[]
+
+  @@index([chainId, startedAt])
+  @@map("ImportJobs")
+}
+
+/// One real run of the Connector Health & Verification suite for one chain.
+model ConnectorCheck {
+  id            Int             @id @default(autoincrement())
+  chainId       String
+  dataSourceId  Int?
+  checkedAt     DateTime        @db.Timestamptz(3)
+  status        ConnectorStatus
+  durationMs    Int?
+  latestFile    String?
+  latestFileAt  DateTime?       @db.Timestamptz(3)
+  itemsParsed   Int?
+  validPrices   Int?
+  errorCount    Int             @default(0)
+  details       Json
+
+  chain  SupermarketChain @relation(fields: [chainId], references: [id])
+  source DataSource?      @relation(fields: [dataSourceId], references: [id])
+
+  @@index([chainId, checkedAt])
+  @@map("ConnectorChecks")
+}
+
+model ShoppingCart {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+
+  items CartItem[]
+
+  @@map("ShoppingCarts")
+}
+
+model CartItem {
+  id        Int     @id @default(autoincrement())
+  cartId    String
+  productId String
+  quantity  Decimal @default(1) @db.Decimal(10, 3)
+
+  cart    ShoppingCart @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product Product      @relation(fields: [productId], references: [id])
+
+  @@unique([cartId, productId])
+  @@map("CartItems")
+}
