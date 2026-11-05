@@ -1,5 +1,5 @@
 import { spawn } from "node:child_process";
-import { existsSync } from "node:fs";
+import { appendFileSync, closeSync, existsSync, openSync } from "node:fs";
 import { join } from "node:path";
 import { NextResponse } from "next/server";
 import { clearSnapshot } from "@/lib/db";
@@ -34,10 +34,23 @@ export async function POST(request: Request) {
   // Answer only after the process really started: a missing Python arrives as an "error" event.
   const started = await new Promise<boolean>((resolve) => {
     try {
-      const child = spawn(python, args, { cwd: engineDir, detached: true, stdio: "ignore", windowsHide: true });
+      // Kept in a git-ignored file so a crash of the background process can be diagnosed.
+      const logPath = join(engineDir, "admin-import.log");
+      const log = openSync(logPath, "a");
+      // On Windows a detached child gets its own console, and a Ctrl-C event there ended long imports.
+      const child = spawn(python, args, {
+        cwd: engineDir,
+        detached: process.platform !== "win32",
+        stdio: ["ignore", log, log],
+        windowsHide: true,
+      });
+      closeSync(log);
       child.once("error", () => resolve(false));
       child.once("spawn", () => resolve(true));
-      child.on("exit", () => clearSnapshot());
+      child.on("exit", (code, signal) => {
+        appendFileSync(logPath, `[${new Date().toISOString()}] ${args.slice(2).join(" ")} exited: code=${code} signal=${signal}\n`);
+        clearSnapshot();
+      });
       child.unref();
     } catch {
       resolve(false);

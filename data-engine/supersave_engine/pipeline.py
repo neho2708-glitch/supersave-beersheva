@@ -8,7 +8,7 @@ import re
 import statistics
 import traceback
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from pathlib import Path
 
@@ -26,6 +26,7 @@ RAW_DIR = db.ROOT / "data-engine" / "raw"
 LOG_DIR = db.ROOT / "verification" / "import-logs"
 MAX_REASONABLE_PRICE = Decimal(5000)
 LOGS_KEPT_PER_CHAIN = 5
+INTERRUPTED_AFTER_MINUTES = 30
 
 
 def utcnow() -> datetime:
@@ -425,6 +426,17 @@ def import_branch(
 def import_chain(conn: Connection, slug: str, trigger: str = "manual") -> dict:
     connector = get_connector(slug)
     source_id = db.upsert_data_source(conn, connector)
+    # A process killed mid-import can't record its own end, so its job would stay RUNNING forever.
+    conn.execute(
+        """UPDATE "ImportJobs" SET status='FAILED', "finishedAt"=%s, "errorCount"=1, errors=%s
+           WHERE "chainId"=%s AND status='RUNNING' AND "startedAt" < %s""",
+        (
+            utcnow(),
+            Jsonb([{"error": "import process ended before finishing"}]),
+            slug,
+            utcnow() - timedelta(minutes=INTERRUPTED_AFTER_MINUTES),
+        ),
+    )
     job_id = conn.execute(
         """INSERT INTO "ImportJobs" ("chainId", "dataSourceId", trigger, status, "startedAt")
            VALUES (%s,%s,%s,'RUNNING',%s) RETURNING id""",
