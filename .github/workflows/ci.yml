@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    env:
+      # Only used so Prisma can load the schema. CI runs no queries.
+      DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run db:generate
+      - run: npm run lint
+      - run: npm test
+      # Build generates next-env.d.ts, which the standalone type check needs.
+      - run: npm run build
+      - run: npm run typecheck
+
+  data-engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r data-engine/requirements.txt
+      - name: Unit tests
+        run: python -m pytest tests -q
+        working-directory: data-engine
+      - name: Live connector check
+        # GitHub's runners are outside Israel and some sources block them. A source that can't
+        # be reached is reported as UNAVAILABLE and doesn't fail the build; data that arrives
+        # but can't be parsed (FAILED) does.
+        run: python -m supersave_engine.cli verify --tolerate-network --no-write
+        working-directory: data-engine
