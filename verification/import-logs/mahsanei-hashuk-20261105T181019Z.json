@@ -1,0 +1,17 @@
+{
+  "jobId": 26,
+  "chain": "mahsanei-hashuk",
+  "trigger": "admin",
+  "status": "SUCCESS",
+  "finishedAt": "2026-11-05T18:10:19.416572+00:00",
+  "branches": 10,
+  "filesFound": 171,
+  "filesDownloaded": 170,
+  "itemsParsed": 1714941,
+  "productsMatched": 275,
+  "pricesValid": 2587,
+  "pricesChanged": 0,
+  "promotions": 750,
+  "reviewItems": 253,
+  "errors": []
+}

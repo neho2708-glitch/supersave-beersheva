@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T15:18:05.013704+00:00",
+  "generatedAt": "2026-11-05T18:26:16.411117+00:00",
   "generatedBy": "supersave_engine.verify (live run)",
   "results": [
     {
@@ -9,7 +9,7 @@
       "sourceUrl": "https://prices.shufersal.co.il/",
       "connectionType": "HTML listing with signed blob links",
       "fileFormat": "XML in GZ",
-      "checkedAt": "2026-11-05T15:16:46.158472+00:00",
+      "checkedAt": "2026-11-05T18:24:29.668385+00:00",
       "steps": [
         {
           "step": "list_files",
@@ -49,7 +49,7 @@
         {
           "step": "freshness",
           "ok": true,
-          "detail": "file age 14.3h, limit 48h"
+          "detail": "file age 17.4h, limit 48h"
         }
       ],
       "storesTotal": 417,
@@ -123,11 +123,11 @@
       "latestFileAt": "2026-11-05T03:00:00+02:00",
       "promotionsParsed": 1388,
       "status": "VERIFIED",
-      "durationMs": 62343,
+      "durationMs": 93813,
       "errorCount": 0,
       "database": {
-        "lastImportAttempt": "2026-11-05T17:08:02.284000+02:00",
-        "lastSuccessfulImport": "2026-11-05T17:13:17.213000+02:00",
+        "lastImportAttempt": "2026-11-05T19:53:34.411000+02:00",
+        "lastSuccessfulImport": "2026-11-05T19:54:33.417000+02:00",
         "productsImported": 255,
         "validPricesInDatabase": 2030,
         "importErrorsLast7Days": 0
@@ -140,12 +140,12 @@
       "sourceUrl": "https://url.publishedprices.co.il/login",
       "connectionType": "HTTPS portal (session + JSON listing)",
       "fileFormat": "XML in GZ",
-      "checkedAt": "2026-11-05T15:17:48.505855+00:00",
+      "checkedAt": "2026-11-05T18:26:03.490036+00:00",
       "steps": [
         {
           "step": "list_files",
           "ok": true,
-          "detail": "2221 files listed"
+          "detail": "2622 files listed"
         },
         {
           "step": "download_stores",
@@ -160,27 +160,27 @@
         {
           "step": "download_prices",
           "ok": true,
-          "detail": "PriceFull7290058140886-001-027-20261105-060006.gz, 1028871 bytes"
+          "detail": "PriceFull7290058140886-001-027-20261105-180011.gz, 1019290 bytes"
         },
         {
           "step": "parse_and_validate_prices",
           "ok": true,
-          "detail": "{\"items\": 13579, \"validPrices\": 13579, \"validShare\": 1.0, \"globalBarcodes\": 13579, \"ok\": true}"
+          "detail": "{\"items\": 13591, \"validPrices\": 13591, \"validShare\": 1.0, \"globalBarcodes\": 13591, \"ok\": true}"
         },
         {
           "step": "extract_real_product",
           "ok": true,
-          "detail": "רביעיית פחיות שוופס = 12.50 ILS"
+          "detail": "יופלה יוגורט גו קרמי = 6.40 ILS"
         },
         {
           "step": "parse_promotions",
           "ok": true,
-          "detail": "PromoFull7290058140886-001-027-20261105-120110.gz: 2401 promotions, 2401 with items"
+          "detail": "PromoFull7290058140886-001-027-20261105-180105.gz: 2405 promotions, 2405 with items"
         },
         {
           "step": "freshness",
           "ok": true,
-          "detail": "file age 11.3h, limit 48h"
+          "detail": "file age 2.4h, limit 48h"
         }
       ],
       "storesTotal": 99,
@@ -205,26 +205,26 @@
         }
       ],
       "sample": {
-        "itemCode": "7290017023212",
-        "name": "רביעיית פחיות שוופס",
-        "price": "12.50",
+        "itemCode": "7290110328764",
+        "name": "יופלה יוגורט גו קרמי",
+        "price": "6.40",
         "branch": "באר שבע",
-        "file": "PriceFull7290058140886-001-027-20261105-060006.gz",
-        "fileUrl": "https://url.publishedprices.co.il/file/d/PriceFull7290058140886-001-027-20261105-060006.gz"
+        "file": "PriceFull7290058140886-001-027-20261105-180011.gz",
+        "fileUrl": "https://url.publishedprices.co.il/file/d/PriceFull7290058140886-001-027-20261105-180011.gz"
       },
-      "itemsParsed": 13579,
-      "validPrices": 13579,
-      "latestFile": "PriceFull7290058140886-001-027-20261105-060006.gz",
-      "latestFileAt": "2026-11-05T06:00:00+02:00",
-      "promotionsParsed": 2401,
+      "itemsParsed": 13591,
+      "validPrices": 13591,
+      "latestFile": "PriceFull7290058140886-001-027-20261105-180011.gz",
+      "latestFileAt": "2026-11-05T18:00:00+02:00",
+      "promotionsParsed": 2405,
       "status": "VERIFIED",
-      "durationMs": 5047,
+      "durationMs": 3702,
       "errorCount": 0,
       "database": {
-        "lastImportAttempt": "2026-11-05T17:13:17.217000+02:00",
-        "lastSuccessfulImport": "2026-11-05T17:13:28.245000+02:00",
+        "lastImportAttempt": "2026-11-05T19:54:33.421000+02:00",
+        "lastSuccessfulImport": "2026-11-05T19:54:42.554000+02:00",
         "productsImported": 278,
-        "validPricesInDatabase": 740,
+        "validPricesInDatabase": 741,
         "importErrorsLast7Days": 0
       }
     },
@@ -235,12 +235,12 @@
       "sourceUrl": "https://prices.carrefour.co.il/",
       "connectionType": "HTML page with embedded JSON listing",
       "fileFormat": "XML / XML in GZ",
-      "checkedAt": "2026-11-05T15:17:53.582719+00:00",
+      "checkedAt": "2026-11-05T18:26:07.224871+00:00",
       "steps": [
         {
           "step": "list_files",
           "ok": true,
-          "detail": "1485 files listed"
+          "detail": "1562 files listed"
         },
         {
           "step": "download_stores",
@@ -275,7 +275,7 @@
         {
           "step": "freshness",
           "ok": true,
-          "detail": "file age 12.1h, limit 48h"
+          "detail": "file age 15.3h, limit 48h"
         }
       ],
       "storesTotal": 147,
@@ -325,11 +325,11 @@
       "latestFileAt": "2026-11-05T05:10:00+02:00",
       "promotionsParsed": 1689,
       "status": "VERIFIED",
-      "durationMs": 1344,
+      "durationMs": 1375,
       "errorCount": 0,
       "database": {
-        "lastImportAttempt": "2026-11-05T17:13:28.250000+02:00",
-        "lastSuccessfulImport": "2026-11-05T17:13:35.291000+02:00",
+        "lastImportAttempt": "2026-11-05T19:54:42.558000+02:00",
+        "lastSuccessfulImport": "2026-11-05T19:54:48.401000+02:00",
         "productsImported": 286,
         "validPricesInDatabase": 1354,
         "importErrorsLast7Days": 0
@@ -342,12 +342,12 @@
       "sourceUrl": "https://url.publishedprices.co.il/login",
       "connectionType": "HTTPS portal (session + JSON listing)",
       "fileFormat": "XML in GZ",
-      "checkedAt": "2026-11-05T15:17:54.940351+00:00",
+      "checkedAt": "2026-11-05T18:26:08.618783+00:00",
       "steps": [
         {
           "step": "list_files",
           "ok": true,
-          "detail": "861 files listed"
+          "detail": "1134 files listed"
         },
         {
           "step": "download_stores",
@@ -382,7 +382,7 @@
         {
           "step": "freshness",
           "ok": true,
-          "detail": "file age 16.6h, limit 48h"
+          "detail": "file age 19.8h, limit 48h"
         }
       ],
       "storesTotal": 51,
@@ -408,11 +408,11 @@
       "latestFileAt": "2026-11-05T00:40:00+02:00",
       "promotionsParsed": 1240,
       "status": "VERIFIED",
-      "durationMs": 3297,
+      "durationMs": 1812,
       "errorCount": 0,
       "database": {
-        "lastImportAttempt": "2026-11-05T17:13:35.294000+02:00",
-        "lastSuccessfulImport": "2026-11-05T17:13:38.052000+02:00",
+        "lastImportAttempt": "2026-11-05T19:54:48.404000+02:00",
+        "lastSuccessfulImport": "2026-11-05T19:54:51.706000+02:00",
         "productsImported": 288,
         "validPricesInDatabase": 288,
         "importErrorsLast7Days": 0
@@ -425,12 +425,12 @@
       "sourceUrl": "https://laibcatalog.co.il/webapi/api/getfiles",
       "connectionType": "JSON API",
       "fileFormat": "XML in GZ",
-      "checkedAt": "2026-11-05T15:17:58.242280+00:00",
+      "checkedAt": "2026-11-05T18:26:10.449318+00:00",
       "steps": [
         {
           "step": "list_files",
           "ok": true,
-          "detail": "1676 files listed"
+          "detail": "2076 files listed"
         },
         {
           "step": "download_stores",
@@ -465,7 +465,7 @@
         {
           "step": "freshness",
           "ok": true,
-          "detail": "file age 12.2h, limit 48h"
+          "detail": "file age 15.4h, limit 48h"
         }
       ],
       "storesTotal": 70,
@@ -491,11 +491,11 @@
       "latestFileAt": "2026-11-05T05:04:00+02:00",
       "promotionsParsed": 4030,
       "status": "VERIFIED",
-      "durationMs": 2015,
+      "durationMs": 2187,
       "errorCount": 0,
       "database": {
-        "lastImportAttempt": "2026-11-05T17:13:38.055000+02:00",
-        "lastSuccessfulImport": "2026-11-05T17:13:55.012000+02:00",
+        "lastImportAttempt": "2026-11-05T19:54:51.709000+02:00",
+        "lastSuccessfulImport": "2026-11-05T19:55:08.677000+02:00",
         "productsImported": 282,
         "validPricesInDatabase": 282,
         "importErrorsLast7Days": 0
@@ -508,12 +508,12 @@
       "sourceUrl": "https://url.publishedprices.co.il/login",
       "connectionType": "HTTPS portal (session + JSON listing)",
       "fileFormat": "XML in GZ",
-      "checkedAt": "2026-11-05T15:18:00.272568+00:00",
+      "checkedAt": "2026-11-05T18:26:12.643671+00:00",
       "steps": [
         {
           "step": "list_files",
           "ok": true,
-          "detail": "367 files listed"
+          "detail": "392 files listed"
         },
         {
           "step": "download_stores",
@@ -548,7 +548,7 @@
         {
           "step": "freshness",
           "ok": true,
-          "detail": "file age 3.1h, limit 48h"
+          "detail": "file age 6.2h, limit 48h"
         }
       ],
       "storesTotal": 24,
@@ -574,11 +574,11 @@
       "latestFileAt": "2026-11-05T14:15:00+02:00",
       "promotionsParsed": 751,
       "status": "VERIFIED",
-      "durationMs": 2311,
+      "durationMs": 1218,
       "errorCount": 0,
       "database": {
-        "lastImportAttempt": "2026-11-05T17:13:55.017000+02:00",
-        "lastSuccessfulImport": "2026-11-05T17:13:56.335000+02:00",
+        "lastImportAttempt": "2026-11-05T19:55:08.680000+02:00",
+        "lastSuccessfulImport": "2026-11-05T19:55:10.070000+02:00",
         "productsImported": 234,
         "validPricesInDatabase": 234,
         "importErrorsLast7Days": 1
@@ -591,12 +591,12 @@
       "sourceUrl": "https://laibcatalog.co.il/webapi/api/getfiles",
       "connectionType": "JSON API",
       "fileFormat": "XML in GZ",
-      "checkedAt": "2026-11-05T15:18:02.595568+00:00",
+      "checkedAt": "2026-11-05T18:26:13.873181+00:00",
       "steps": [
         {
           "step": "list_files",
           "ok": true,
-          "detail": "1021 files listed"
+          "detail": "1243 files listed"
         },
         {
           "step": "download_stores",
@@ -631,7 +631,7 @@
         {
           "step": "freshness",
           "ok": true,
-          "detail": "file age 13.0h, limit 48h"
+          "detail": "file age 16.1h, limit 48h"
         }
       ],
       "storesTotal": 71,
@@ -711,14 +711,14 @@
       "latestFileAt": "2026-11-05T04:19:00+02:00",
       "promotionsParsed": 5015,
       "status": "VERIFIED",
-      "durationMs": 2344,
+      "durationMs": 2452,
       "errorCount": 0,
       "database": {
-        "lastImportAttempt": "2026-11-05T17:13:56.338000+02:00",
-        "lastSuccessfulImport": "2026-11-05T17:16:44.516000+02:00",
+        "lastImportAttempt": "2026-11-05T20:21:02.470000+02:00",
+        "lastSuccessfulImport": "2026-11-05T20:24:06.498000+02:00",
         "productsImported": 275,
         "validPricesInDatabase": 2586,
-        "importErrorsLast7Days": 0
+        "importErrorsLast7Days": 3
       }
     }
   ]
